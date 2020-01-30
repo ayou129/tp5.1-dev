@@ -1,180 +1,171 @@
-![](https://box.kancloud.cn/5a0aaa69a5ff42657b5c4715f3d49221) 
+MYSQL  3306
+sshd   22
+Vsftp  21、20
+httpd  80
+HTTPS/SSL 443
 
-ThinkPHP 5.1（LTS版本） —— 12载初心，你值得信赖的PHP框架
-===============
+执行cmd的bat文件内容：
+cmd /k "cd C:\inetpub\LocalUser\XXX&php think AutoLoginCredentials"
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/top-think/framework/badges/quality-score.png?b=5.1)](https://scrutinizer-ci.com/g/top-think/framework/?branch=5.1)
-[![Build Status](https://travis-ci.org/top-think/framework.svg?branch=master)](https://travis-ci.org/top-think/framework)
-[![Total Downloads](https://poser.pugx.org/topthink/framework/downloads)](https://packagist.org/packages/topthink/framework)
-[![Latest Stable Version](https://poser.pugx.org/topthink/framework/v/stable)](https://packagist.org/packages/topthink/framework)
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D5.6-8892BF.svg)](http://www.php.net/)
-[![License](https://poser.pugx.org/topthink/framework/license)](https://packagist.org/packages/topthink/framework)
+1.关闭电脑自动更新
+	运行->  services.msc  ->window update
+2.永不熄灭屏幕，电源选项
 
-ThinkPHP5.1对底层架构做了进一步的改进，减少依赖，其主要特性包括：
+任务计划程序
 
- + 采用容器统一管理对象
- + 支持Facade
- + 注解路由支持
- + 路由跨域请求支持
- + 配置和路由目录独立
- + 取消系统常量
- + 助手函数增强
- + 类库别名机制
- + 增加条件查询
- + 改进查询机制
- + 配置采用二级
- + 依赖注入完善
- + 支持`PSR-3`日志规范
- + 中间件支持（V5.1.6+）
- + Swoole/Workerman支持（V5.1.18+）
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+C:\Windows\System32\drivers\etc
+C:\wamp64\bin\apache\apache2.4.37\logs
+C:\Users\Administrator\Desktop\web
 
 
-> ThinkPHP5的运行环境要求PHP5.6以上。
+https://npm.taobao.org/mirrors/chromedriver/
+安装Composer
+    1.下载
+        https://getcomposer.org/download/   或U盘里的安装包
+    2.更换中国镜像
+        composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
-## 安装
+install Composer：https://getcomposer.org/download/
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php -r "if (hash_file('sha384', 'composer-setup.php') === 'baf1608c33254d00611ac1705c1d9958c817a1a33bce370c0595974b342601bd80b92a3f46067da89e3b06bff421f182') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
 
-使用composer安装
+Composer安装
+    php composer.phar require facebook/webdriver
+    php composer.phar require qiniu/php-sdk
+    php composer.phar require ext-curl
+    php composer.phar require ext-json
+    php composer.phar require phpmailer/phpmailer
+    php composer.phar require sunra/php-simple-html-dom-parser
+    php composer.phar require topthink/think-queue^2.0.4
+    php composer.phar require composer-plugin-api
+    php composer.phar require topthink/think-installer
+    php composer.phar require topthink/think-helper ^1.0.4
+    #这是删除命令，有需要时用 php composer.phar composer remove sunra/php-simple-html-dom-parser
 
-~~~
-composer create-project topthink/think tp
-~~~
+    https://simplehtmldom.sourceforge.io/ 文档
+    https://microphp.us/plugins/public/microphp_res/simple_html_dom/manual.htm 中文文档
 
-启动服务
-
-~~~
-cd tp
-php think run
-~~~
-
-然后就可以在浏览器中访问
-
-~~~
-http://localhost:8000
-~~~
-
-更新框架
-~~~
-composer update topthink/framework
-~~~
+/*
+自动化命令行：
+    java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-4.0.0-alpha-2.jar
+    php think AutoLoginCredentials --site_name all
 
 
-## 在线手册
+cmd.exe执行：
+    >cacls %COMSPEC% /E /G %COMPUTERNAME%\IUSR_%COMPUTERNAME%:R
 
-+ [完全开发手册](https://www.kancloud.cn/manual/thinkphp5_1/content)
-+ [升级指导](https://www.kancloud.cn/manual/thinkphp5_1/354155) 
+1.java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-4.0.0-alpha-2.jar
 
-## 目录结构
 
-初始的目录结构如下：
+Thinkphp-queue
+    php think queue:listen --queue PutFile \
+    --memory 1024 \
+    --timeout 300 \
+    --sleep 3 \
+    --delay 300
+*/
 
-~~~
-www  WEB部署目录（或者子目录）
-├─application           应用目录
-│  ├─common             公共模块目录（可以更改）
-│  ├─module_name        模块目录
-│  │  ├─common.php      模块函数文件
-│  │  ├─controller      控制器目录
-│  │  ├─model           模型目录
-│  │  ├─view            视图目录
-│  │  └─ ...            更多类库目录
-│  │
-│  ├─command.php        命令行定义文件
-│  ├─common.php         公共函数文件
-│  └─tags.php           应用行为扩展定义文件
-│
-├─config                应用配置目录
-│  ├─module_name        模块配置目录
-│  │  ├─database.php    数据库配置
-│  │  ├─cache           缓存配置
-│  │  └─ ...            
-│  │
-│  ├─app.php            应用配置
-│  ├─cache.php          缓存配置
-│  ├─cookie.php         Cookie配置
-│  ├─database.php       数据库配置
-│  ├─log.php            日志配置
-│  ├─session.php        Session配置
-│  ├─template.php       模板引擎配置
-│  └─trace.php          Trace配置
-│
-├─route                 路由定义目录
-│  ├─route.php          路由定义
-│  └─...                更多
-│
-├─public                WEB目录（对外访问目录）
-│  ├─index.php          入口文件
-│  ├─router.php         快速测试文件
-│  └─.htaccess          用于apache的重写
-│
-├─thinkphp              框架系统目录
-│  ├─lang               语言文件目录
-│  ├─library            框架类库目录
-│  │  ├─think           Think类库包目录
-│  │  └─traits          系统Trait目录
-│  │
-│  ├─tpl                系统模板目录
-│  ├─base.php           基础定义文件
-│  ├─console.php        控制台入口文件
-│  ├─convention.php     框架惯例配置文件
-│  ├─helper.php         助手函数文件
-│  ├─phpunit.xml        phpunit配置文件
-│  └─start.php          框架入口文件
-│
-├─extend                扩展类库目录
-├─runtime               应用的运行时目录（可写，可定制）
-├─vendor                第三方类库目录（Composer依赖库）
-├─build.php             自动生成定义文件（参考）
-├─composer.json         composer 定义文件
-├─LICENSE.txt           授权说明文件
-├─README.md             README 文件
-├─think                 命令行入口文件
-~~~
+Mysql
+    1.更改密码
+        MYSQL>set password for root@localhost = password('abcABC123');
 
-> 可以使用php自带webserver快速测试
-> 切换到根目录后，启动命令：php think run
+    2.添加局域网访问
+        1.防火墙设置(一定要开 入站规则，FTP可以不开)
+            控制面板 系统和安全 windows防火墙 高级设置 出站规则 新建规则 3306添加
+        2.命令
+            update user set host = '%' where user = 'root';
+            GRANT ALL PRIVILEGES ON *.* TO 'resources'@'192.168.1.3' IDENTIFIED BY 'abcABC123' WITH GRANT OPTION;
+            FLUSH PRIVILEGES;
 
-## 命名规范
+            delete from user where host = '192.168.1.3';
+            DELETE FROM `user` WHERE `User` = 'lee129';
 
-`ThinkPHP5`遵循PSR-2命名规范和PSR-4自动加载规范，并且注意如下规范：
 
-### 目录和文件
+Redis 安装
+    下载安装redis
+        https://github.com/MicrosoftArchive/redis/releases/tag/win-3.2.100
+        下载redis扩展
+            http://pecl.php.net/package/redis
+            http://pecl.php.net/package/redis/5.1.1/windows
+        查看phpinfo();的
+            Zend Extension Build	API320170718,TS,VC15
+        去选择日期
+            -> php_redis-5.1.1-7.4-ts-vc15-x64.zip
+        将php_redis.dll放入php/ext中
+    运行
+        D:\redis>redis-server.exe redis.windows.conf
+        若仍报以下错误：
+            # Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
+        按顺序输入如下命令就可以连接成功
+            1. redis-cli.exe
+            2. shutdown
+            3. exit
+            4. redis-server.exe redis.windows.conf
+        window下安装redis服务并使其自启
+            redis-server --service-install redis.windows-service.conf --loglevel verbose
 
-*   目录不强制规范，驼峰和小写+下划线模式均支持；
-*   类库、函数文件统一以`.php`为后缀；
-*   类的文件名均以命名空间定义，并且命名空间的路径和类库文件所在路径一致；
-*   类名和类文件名保持一致，统一采用驼峰法命名（首字母大写）；
 
-### 函数和类、属性命名
+Window开启FTP服务
 
-*   类的命名采用驼峰法，并且首字母大写，例如 `User`、`UserType`，默认不需要添加后缀，例如`UserController`应该直接命名为`User`；
-*   函数的命名使用小写字母和下划线（小写字母开头）的方式，例如 `get_client_ip`；
-*   方法的命名使用驼峰法，并且首字母小写，例如 `getUserName`；
-*   属性的命名使用驼峰法，并且首字母小写，例如 `tableName`、`instance`；
-*   以双下划线“__”打头的函数或方法作为魔法方法，例如 `__call` 和 `__autoload`；
+    1.程序和功能 打开或关闭Windows功能 安装 在Inter information service下
+        前置设置
+            先安装.NET Framework低版本  重启
+        FTP服务
+        FTP扩展性
+        IIS管理控制台
+    2.创建FTP隔离用户(文件夹)
+        所有web文件目录全放到 ftp当中(首先创建LocalUser，创建对应的用户例如：project1)
+        C:\inetpub\LocalUser\project1
+        C:\inetpub\LocalUser\project2
+        C:\inetpub\LocalUser\project3
+    3.计算机管理 系统工具 本地用户和组 用户 添加 新用户
+        用户不能更改密码
+        密码永不过期
+    4.创建FTP
+        端口8101 8102
+        IP地址设置全部未分配 切记！
+    5.点击创建的ftp右键 编辑器权限，给刚创建的用户(找到所在的组)权限
+    *可能不需要调整防火墙
 
-### 常量和配置
+自定义任务
+    任务计划程序
+        1.打开自动化文件(chromedriver&selenium) 选择对应bat
+            延时 30S，系统问题，不设置延时打不开
+        2.打开队列程序PutFile 选择对应bat
+            延迟45秒，因为有redis
+        3.打开更新登录态程序(updateLoginTai),每隔4小时更新一次
+            (1)重复任务间隔4小时一次，持续时间无限期
+            (2)热本文由最多延迟时间(随机延迟) 15分钟
+        4.启动wamp
+        5.启动QQ
+#
+<VirtualHost *:8001>
+	ServerName api.resources.com
+	DirectoryIndex index.php
+	DocumentRoot "C:/inetpub/LocalUser/resources/public"
+	<Directory  "C:/inetpub/LocalUser/resources/public/">
+		Options -Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Allow from all
+		Require all granted
+		Order allow,deny
+	</Directory>
+</VirtualHost>
 
-*   常量以大写字母和下划线命名，例如 `APP_PATH`和 `THINK_PATH`；
-*   配置参数以小写字母和下划线命名，例如 `url_route_on` 和`url_convert`；
-
-### 数据表和字段
-
-*   数据表和字段采用小写加下划线方式命名，并注意字段名不要以下划线开头，例如 `think_user` 表和 `user_name`字段，不建议使用驼峰和中文作为数据表字段命名。
-
-## 参与开发
-
-请参阅 [ThinkPHP5 核心框架包](https://github.com/top-think/framework)。
-
-## 版权信息
-
-ThinkPHP遵循Apache2开源协议发布，并提供免费使用。
-
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
-
-版权所有Copyright © 2006-2018 by ThinkPHP (http://thinkphp.cn)
-
-All rights reserved。
-
-ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
-
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
+#
+<VirtualHost *:8002>
+	ServerName www.resources.com
+	ServerAlias resources.com
+	DirectoryIndex index.html error.html
+	DocumentRoot "C:/inetpub/LocalUser/resources_index"
+	<Directory  "C:/inetpub/LocalUser/resources_index/">
+		Options -Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Allow from all
+		Require all granted
+		Order allow,deny
+	</Directory>
+</VirtualHost>
