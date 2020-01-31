@@ -1,4 +1,4 @@
-###将所有系统软件图标放置桌面(方便操作)
+### 将所有系统软件图标放置桌面(方便操作)
 ***
 1. 这台电脑
 2. 控制面板
@@ -8,7 +8,7 @@
 6. 任务计划程序
 6. 计算机管理
 
-###将所有第三方软件拉入服务器中
+### 将所有第三方软件拉入服务器中
 ***
 1. 微软系统前置软件(MSVBCRT.AIO.2019.04.24.x64)(首先安装，并且重启)
 2. Notepad++(wampserver3.1.7_x64)
@@ -19,7 +19,7 @@
 7. Node+npm(node-v12.14.1-x64)
 8. 安全狗(safedogfwqV5.0.exe)
 
-###关闭不相关软件
+### 关闭不相关软件
 ***
 1. 关闭电脑自动更新
 - 运行->  services.msc  ->window update(服务) 禁用
@@ -32,22 +32,22 @@ C:\Windows\System32\drivers\etc
 C:\wamp64\bin\apache\apache2.4.37\logs
 C:\inetpub\LocalUser\web
 ```
-###增加环境变量
+### 增加环境变量
 >电脑右键->高级->环境变量->系统变量->Path增加
 ```text
 C:\wamp64\bin\php\php7.2.14
 C:\ProgramData\ComposerSetup\bin
 ```
 
-###配置各个软件
+### 配置各个软件
 *** 
-####Composer
-#####下载
+#### Composer
+##### 下载
 - https://getcomposer.org/download/或U盘里的安装包
-#####更换中国镜像
+##### 更换中国镜像
 - composer config -g repo.packagist composer https://packagist.phpcomposer.com
 ***
-####Mysql
+#### Mysql
 - 更改密码
 ```mysql
 MYSQL>set password for root@localhost = password('abcABC123');
@@ -67,11 +67,11 @@ delete from user where host = '192.168.1.3';
 DELETE FROM `user` WHERE `User` = 'lee129';
 ```
 
-####Redis
+#### Redis
 ***
 redis文档：https://github.com/MicrosoftArchive/redis/releases/tag/win-3.2.100
 ***
-#####开启Redis
+##### 开启Redis
 - 方式1
 ```text
 cd到redis目录
@@ -89,8 +89,8 @@ cd到redis目录
 ```text
 redis-server --service-install redis.windows-service.conf --loglevel verbose
 ```
-#####在php安装扩展redis
-######下载redis扩展
+##### 在php安装扩展redis
+###### 下载redis扩展
 http://pecl.php.net/package/redis
 http://pecl.php.net/package/redis/5.1.1/windows
 ***
@@ -103,7 +103,7 @@ http://pecl.php.net/package/redis/5.1.1/windows
 extension=php_redis.dll
 ```
 
-####Window开启FTP服务
+#### Window开启FTP服务
 1. 程序和功能 打开或关闭Windows功能 安装 在Inter information service下
 - 前置设置
     - 先安装.NET Framework低版本  重启
@@ -135,11 +135,11 @@ C:\inetpub\LocalUser\project3
     - 命令链路：自定义端口，默认是21
     - 数据链路：服务器的大范围端口，客户端访问服务器
 >
-###执行cmd的bat文件内容
+### 执行cmd的bat文件内容
 ```text
 cmd /k "cd C:\inetpub\LocalUser\XXX&php think AutoLoginCredentials"
 ```
-###各个端口介绍
+### 各个端口介绍
 ```text
 MYSQL  3306
 sshd   22
@@ -148,7 +148,7 @@ httpd  80
 HTTPS/SSL 443
 ```
 
-###安装Chromedriver
+### 安装Chromedriver
 *** 
 https://npm.taobao.org/mirrors/chromedriver/
 
@@ -182,7 +182,7 @@ cacls %COMSPEC% /E /G %COMPUTERNAME%\IUSR_%COMPUTERNAME%:R
 ```text
 java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-4.0.0-alpha-2.jar
 ```
-###Thinkphp-queue
+### Thinkphp-queue
 ```text
 php think queue:listen --queue PutFile \
 --memory 1024 \
@@ -193,7 +193,7 @@ php think queue:listen --queue PutFile \
 
 
 
-###自定义任务
+### 自定义任务
 - 任务计划程序
     1. 打开自动化文件(chromedriver&selenium) 选择对应bat
         - 延时 30S，系统问题，不设置延时打不开
