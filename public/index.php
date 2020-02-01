@@ -12,8 +12,9 @@
 // [ 应用入口文件 ]
 namespace think;
 
-//define('NOW_TIME', time());
-////define('LOG_PATH', __DIR__ . '/../log/');
+define('NOW_TIME', time());
+define('LOG_PATH', __DIR__ . '/../log/');
+define('DOWNLOAD_PATH', __DIR__ . '/../download/');
 
 // 加载基础文件
 require __DIR__ . '/../thinkphp/base.php';

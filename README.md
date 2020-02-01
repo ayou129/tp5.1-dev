@@ -134,7 +134,8 @@ C:\inetpub\LocalUser\project3
 - 被动模式需要 (自定义端口+1024/65535)
     - 命令链路：自定义端口，默认是21
     - 数据链路：服务器的大范围端口，客户端访问服务器
->
+
+文档https://xuliangzhan_admin.gitee.io/xe-utils/#/
 ### 执行cmd的bat文件内容
 ```text
 cmd /k "cd C:\inetpub\LocalUser\XXX&php think AutoLoginCredentials"
