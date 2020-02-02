@@ -18,7 +18,6 @@ class Email
     public function __construct($address, $name, array $content)
     {
         $mail = new PHPMailer(true);
-
         try {
             //Server settings
 //            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -57,7 +56,7 @@ class Email
 
             $mail->send();
         } catch (Exception $e) {
-            throw new Base(['msg' => $mail->ErrorInfo]);
+            throw Base(['msg' => $mail->ErrorInfo]);
         }
     }
 }
