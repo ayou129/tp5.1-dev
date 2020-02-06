@@ -23,17 +23,17 @@ class Base extends Exception
 
     public function __construct(array $params = [])
     {
-        if (array_key_exists('msg', $params)) {
-            $this->msg = $params['msg'];
-        }
-        if (array_key_exists('data', $params)) {
-            $this->data = $params['data'];
-        }
-        if (array_key_exists('client_code', $params)) {
-            $this->client_code = $params['client_code'];
-        }
-        if (array_key_exists('http_code', $params)) {
-            $this->http_code = $params['http_code'];
-        }
+	    if (array_key_exists('msg', $params)) {
+		    $this->msg = $params['msg'];
+	    }
+	    if (array_key_exists('data', $params)) {
+		    $this->data = $params['data'];
+	    }
+	    if (array_key_exists('client_code', $params)) {
+		    $this->client_code = $params['client_code'];
+	    }
+	    if (array_key_exists('http_code', $params)) {
+		    $this->http_code = $params['http_code'];
+	    }
     }
 }

@@ -3,6 +3,7 @@
 /vendor
 *.log
 .env
+thinkphp
 .DS_Store
 thinkphp
 log/*
