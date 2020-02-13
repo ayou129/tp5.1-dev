@@ -48,6 +48,18 @@ C:\ProgramData\ComposerSetup\bin
 - https://getcomposer.org/download/或U盘里的安装包
 ##### 更换中国镜像
 - composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+#### Npm
+***
+##### 下载
+> http://nodejs.cn/
+##### 更换速度更快的节点
+```
+npm install -g nrm
+nrm ls
+nrm test *
+nrm use *
+```
 ***
 #### Mysql
 - 更改密码
